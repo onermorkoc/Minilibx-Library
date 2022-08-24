@@ -56,9 +56,10 @@ dizi veriyoruz) alıyor fonksiyon klayveye her basıldıgında onun key kodunu f
 * mlx_clear_window() ==> Basılmıs tüm resimleri temizliyor parametre olarak mlx_ptr ve win_ptr alıyor.
 
 ################################################################################################# EK Notlar ##################################################################################################################
-
-Macos sağ tusu : 124 , 2
-Macos sol tuşu : 123 , 0
-Macos yukarı tuşu : 126, 13
-Macos aşağı tuşu : 125, 1
-Esc tuşu : 53
+              
+             Macos | Linux
+Sağ tuşu    : 124  | 2
+Sol tuşu    : 123  | 0
+Yukarı tuşu : 126  | 13
+Aşağı tuşu  : 125  | 1
+Esc tuşu    : 53
