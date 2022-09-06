@@ -63,12 +63,14 @@ bilgilerini gelen parametrelerın ıcıne aktarmak için bits_per_pixel, size_li
 sonra bize dönen int *img_data nın diyelimki 0. pixel renk kodunu kırmızı yapıcaz yapıcagımız işlem şu: img_data[0] = FF0000; eger resmin full kırmızı olmasını ıstıyorsak whıle ile içini donup tek tek pıxel koduna kırmızı 
 degerini vermemız gerekırdı.
 
-################################################################################################# EK Notlar ##################################################################################################################
+################################################################################################# Tuş Key Kodları ##################################################################################################################
               
-             Macos | Linux
-             
-Sol tuşu    : 123  | 65361
-Sağ tuşu    : 124  | 65363
-Yukarı tuşu : 126  | 65362
-Aşağı tuşu  : 125  | 65364
-Esc tuşu    : 53   | 65307
+W tuşu      => Linux: 119  Macos: 13
+S tuşu      => Linux: 115  Macos: 1
+D tuşu      => Linux: 100  Macos: 2
+A tuşu      => Linux: 97   Macos: 0
+Sol tuşu    => Linux: 65361  Macos: 123 
+Sağ tuşu    => Linux: 65363  Macos: 124  
+Yukarı tuşu => Linux: 65362  Macos: 126 
+Aşağı tuşu  => Linux: 65364  Macos: 125 
+Esc tuşu    => Linux: 65307  Macos: 53   
