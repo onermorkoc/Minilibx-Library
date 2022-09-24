@@ -1,8 +1,8 @@
 ##################################################################################### => Linuxlar için gerekli paketlerin yüklenmesi <= ##################################################################################### 
 
-1) sudo chmod 777 minilibx_linux_download_packages.sh
+1) sudo chmod 777 setup.sh && ./setup.sh
 
-2) ./minilibx_linux_download_packages.sh
+Not: setup.sh dosyası Linux klasörü içindedir.
 
 ######################################################################################## => Kütüphaneyi kendi projenize dahil edin <= ####################################################################################### 
 
@@ -21,56 +21,11 @@ Linux:
 1) Derleme almak için ilk önce minilibx-linux içinde iken 'make' çekin kütüphane kendisini derleyerek bir çıktı verecek: 'libmlx.a'
 2) Kendi projenizde derleme almak için ise ilk önce kendi c dosyalarınız sonra 'libmlx.a' dosyasının konumu ve ardından şu bayrakları ekleyin: '-lXext -lX11 -lm -lz'
 
-gcc *.c ./minilibx-linux/libmlx.a -lXext -lX11 -lm -lz
+Örnek: gcc *.c ./minilibx-linux/libmlx.a -lXext -lX11 -lm -lz
 
 Macos:
 
 1) Derleme almak için ilk önce minilibx-macos içinde iken 'make' çekin kütüphane kendisini derleyerek bir çıktı verecek: 'libmlx.a'
 2) Kendi projenizde derleme almak için ise ilk önce kendi c dosyalarınız sonra 'libmlx.a' dosyasının konumu ve ardından şu bayrakları ekleyin: '-framework OpenGL -framework AppKit'
 
-gcc *.c ./minilibx-macos/libmlx.a -framework OpenGL -framework AppKit
-
-####################################################################################### =>  MLX kütüphanesi Hakkında <= ######################################################################################################
-
-* mlx_init()  ==> Bu fonksiyon minilibx kütüphanesini başlatıyor ve void bir dizi döndürüyor. (mlx_ptr neredeyse kutuphanenin tum fonksıyonlara parametre olarak yolluyoruz)
-
-* mlx_new_window() ==> Bu fonksiyon pencere oluşturuyor bir tane mlx_ptr dizisi alıyor ve hight, width son olarak program adı alıyor.
-ve void bir win_ptr dizisi döndürüyor mlx_ptr gibi hemen hemen tüm mlx fonksiyonlara parametre olarak yolluyoruz. 
-
-* mlx_loop() ==> Bu fonksıyon pencerenin açık kalmasını sağlıyor parametre olarak mlx_ptr alıyor
-
-* mlx_xpm_file_to_image ==> xmp resimleri okuyor ve bir dizi döndürüyor(dönen diziyi mlx_put_image_to_window parametre olarak veriyoruz ekrana basması için) Parametre olarak mlx_ptr dizisi, resım konumu dizi olarak alıyor,
-ve ıkı tane değeri verilmemis int adresi ıstıyor eğer okuyamazsa null döndürüyor.
-
-* mlx_put_image_to_window() ==> Bu resımlerı basmamıza yarıyor parametre olarak: mlx_ptr alıyor, win_ptr alıyor, mlx_xpm_file_to_image fonskıyonundan donen diziyi alıyor ve bir x y kordınatı alıyor örnek olarak : (0,0) noktası
-
-* mlx_destroy_window()  ==> Pencereyi yok ediyor parametre olarak mlx_ptr ve win_ptr alıyor.
-
-* mlx_destroy_display(s_long->mlx);  ==> Kütüphane tamamen kapatmak için(freelemek için) kullanılıyor (tahmınen) parametre olarak mlx_ptr alıyor.
-
-* mlx_hook(win_ptr, 2, 1L << 0, fonksiyon, struct_dizi) ==> Bu kod klayve kontrol ediyor parametre olarak win_ptr sabit kod(2, 1L << 0) ve int döndüren; int bir parametre alan fonksiyon alıyor son olarak bir dizi(biz struct
-dizi veriyoruz) alıyor fonksiyon klayveye her basıldıgında onun key kodunu fonksiyona oto yolluyor bu yuzden int bir parametre alan fonksiyon veriyoruz
-
-* mlx_hook(win_ptr, 17, 0, fonksiyon, struct_dizi) ==> Bu fonksiyon pencereden kapatma tusu(x) kontrol ediyor 
-
-* mlx_clear_window() ==> Basılmıs tüm resimleri temizliyor parametre olarak mlx_ptr ve win_ptr alıyor.
-
-* mlx_new_image() ==> içi boş(siyah) resim oluşturur parametre olarak mlx_ptr, oluşacak resim genişligi(width) ve oluşacak resmin yüksekliği (height) alır eger resmi başarılı bir şekilde oluştursa bize void *img_ptr döndürür.
-
-int *img_data = (int *)mlx_get_data_addr(img_ptr, &bits_per_pixel, &size_line, &endian) ==> Diyelimki bir resim oluşturduk peki resmin içindeki pixellere nasıl ulaşıcaz içini nasıl doldurcaz hepsini mlx_get_data_addr fonksiyondan 
-dönen int diziden yapıyoruz bu fonksiyon hem bir resim hakkında bilgi verir hemde resmin pixel pixel datasını bize dizi olarak döndürür.Öncelikle parametre olarak resmin adresini alır(img_ptr), daha sonra bu resim hakkında
-bilgilerini gelen parametrelerın ıcıne aktarmak için bits_per_pixel, size_line ve endian degişkenlerinin (3 de int türünden olmalı) adresslerini gönderiyoruz(basına & koyarsanız o degişkenin adresini göndermiş oluruz) daha
-sonra bize dönen int *img_data nın diyelimki 0. pixel renk kodunu kırmızı yapıcaz yapıcagımız işlem şu: img_data[0] = FF0000; eger resmin full kırmızı olmasını ıstıyorsak whıle ile içini donup tek tek pıxel koduna kırmızı 
-degerini vermemız gerekırdı.
-
-################################################################################################# Tuş Key Kodları ##################################################################################################################
-              
-W tuşu      => Linux: 119  Macos: 13
-S tuşu      => Linux: 115  Macos: 1
-D tuşu      => Linux: 100  Macos: 2
-A tuşu      => Linux: 97   Macos: 0
-Sol tuşu    => Linux: 65361  Macos: 123 
-Sağ tuşu    => Linux: 65363  Macos: 124  
-Yukarı tuşu => Linux: 65362  Macos: 126 
-Aşağı tuşu  => Linux: 65364  Macos: 125 
-Esc tuşu    => Linux: 65307  Macos: 53   
+Örnek: gcc *.c ./minilibx-macos/libmlx.a -framework OpenGL -framework AppKit
