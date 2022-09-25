@@ -6,7 +6,7 @@ Macos: gcc example-04.c libmlx_macos.a -framework OpenGL -framework AppKit
 
 ==> mlx_new_image() Fonksiyonu <==
 
-Açıklama: İçi boş(siyah) resim oluşturur parametre olarak mlx_ptr, oluşacak resim genişligi(width) ve oluşacak resmin yüksekliği (height) alıyor. 
+Açıklama: İçi boş(siyah) resim oluşturur parametre olarak mlx_ptr, oluşacak resim genişligi(width) ve oluşacak resmin yüksekliği (height) alır. 
 Eger resmi başarılı bir şekilde oluştursa bize void *img_ptr döndürür.
 
 ==> mlx_get_data_addr() Fonksiyonu <==
@@ -14,7 +14,7 @@ Eger resmi başarılı bir şekilde oluştursa bize void *img_ptr döndürür.
 int *img_data = (int *)mlx_get_data_addr(img_ptr, &bits_per_pixel, &size_line, &endian)
 
 Açıklama: Diyelimki bir resim oluşturduk peki resmin içindeki pixellere nasıl ulaşıcaz içini nasıl doldurcaz hepsini mlx_get_data_addr fonksiyondan 
-dönen int diziden yapıyoruz bu fonksiyon hem bir resim hakkında bilgi verir hemde resmin pixel pixel datasını bize dizi olarak döndürür.Öncelikle
+dönen int diziden yapıyoruz bu fonksiyon hem bir resim hakkında bilgi verir hemde resmin pixel pixel datasını bize int dizi olarak döndürür.Öncelikle
 parametre olarak resmin adresini alır(img_ptr), daha sonra bu resim hakkında bilgilerini gelen parametrelerın ıcıne aktarmak için bits_per_pixel,
 size_line ve endian degişkenlerinin (3 de int türünden olmalı) adresslerini gönderiyoruz(basına & koyarsanız o degişkenin adresini göndermiş oluruz)
 daha sonra bize dönen int *img_data nın diyelimki 0. pixel renk kodunu kırmızı yapıcaz yapıcagımız işlem şu: img_data[0] = FF0000; eger resmin full
