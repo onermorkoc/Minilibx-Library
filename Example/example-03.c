@@ -7,16 +7,16 @@ Macos: gcc example-03.c libmlx_macos.a -framework OpenGL -framework AppKit
 ==> mlx_hook() Fonksiyonu <==
 
 Açıklama: Fonksiyon girilen parametrelere göre klayvenin kontrolüne ve pencere de bulunan çarpı(x) butonunu kontrol etmemize
-olanak sağlıyor.
+olanak sağlar.
 
-mlx_hook(win_ptr, 17, 0, fonksiyon, struct_dizi) ==> Pencereden çarpı(x) butonu kontrol ediyor parametre olarak win_ptr alıyor
-"17, 0" degerleri sabit sonraki parametre int döndüren bir fonksiyon olmak zorunda bir sonraki parametre ise önceki parametre olarak verdigimiz 
-fonksiyonun parametresini veriyoruz (o fonksıyonun kaynagını daha doğrusu. Aşagıdaki örneği incelemeniz daha anlaşılır olacaktır) 
+mlx_hook(win_ptr, 17, 0, fonksiyon, struct_dizi) ==> Pencereden çarpı(x) butonunu kontrol eder parametre olarak win_ptr,
+"17, 0" degerleri sabit, int döndüren bir fonksiyon ve bir sonraki parametre ise önceki parametre olarak verdigimiz 
+fonksiyonun parametresini veriyoruz (o fonksıyonun kaynagını daha doğrusu. Aşagıdaki örneği inceleyiniz daha anlaşılır olacaktır) 
 
-mlx_hook(win_ptr, 2, 1L << 0, fonksiyon, struct_dizi) ==> Klayveyi kontrol ediyor parametre olarak win_ptr, "2, 1L << 0" değerleri sabit ve
+mlx_hook(win_ptr, 2, 1L << 0, fonksiyon, struct_dizi) ==> Klayveyi kontrol eder parametre olarak win_ptr, "2, 1L << 0" değerleri sabit ve
 int döndüren int bir parametre alan (çünkü klayvede basılan her tuşun int bir karşılığı var bunları fonksiyon içinde kontrol etmek için)
-fonksiyon alıyor bide bu fonksiyonun kaynagını alıyor (yukardaki açıklamayla aynı ek olarak dıyelımkı fonksıyon dısardan herhangı bır kaynak parametre almıyorsa
-napıcaz? NULL yazmamız yeterli olacaktır)
+fonksiyon, bide bu fonksiyonun kaynagını veriyoruz(yukardaki açıklamayla aynı ek olarak dıyelımkı fonksıyon dısardan herhangı bır kaynak parametre almıyorsa
+NULL yazıyoruz)
 
 Bazı klayve tuşların key kodların linux ve macos için degerleri:
 
