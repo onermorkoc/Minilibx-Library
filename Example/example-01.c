@@ -6,9 +6,9 @@ Macos: gcc example-01.c libmlx_macos.a -framework OpenGL -framework AppKit
 
 ==> mlx_pixel_put() Fonksiyonu <==
 
-Kabaca pencerenin istenilen pixel konumuna(x, y) verilen rengi(int bir renk kodu) koyuyor. Parametre olarak
+Kabaca pencerenin istenilen pixel konumuna(x, y) verilen rengi(int bir renk kodu) koyar. Parametre olarak
 mlx_ptr, win_ptr, rengin koyulacak pixel konumu için x, y ve son olarak koyulacak renk kodu (int)
-Aşagıdaki örnekte iç içe 2 while ile pencerenin her pixel konumuna açık mavi bir renk bastım
+Aşagıdaki örnekte ise iç içe 2 while ile pencerenin her pixel konumuna açık mavi bir renk bastım.
 Farklı renk int kodları denemek için bu siteye göz atınız: https://www.tydac.ch/color/
 */
 
